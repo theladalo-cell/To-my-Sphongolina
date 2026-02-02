@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Chwane 💖</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #ffb6c1, #ffe6f2);
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            text-align: center;
+        }
+        #card {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 40px 30px;
+            border-radius: 25px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            max-width: 350px;
+        }
+        h1 {
+            color: #c9184a;
+            font-size: 2.6rem;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #6a040f;
+            font-size: 1.2rem;
+            margin-bottom: 35px;
+        }
+        button {
+            font-size: 1.3rem;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        #yesBtn {
+            background: #ff4d6d;
+            color: white;
+            box-shadow: 0 10px 25px rgba(255, 77, 109, 0.5);
+        }
+        #noBtn {
+            background: #9d0208;
+            color: white;
+            position: absolute;
+        }
+        .heart {
+            position: absolute;
+            bottom: -30px;
+            font-size: 24px;
+            animation: floatUp linear infinite;
+            opacity: 0.7;
+        }
+        @keyframes floatUp {
+            from {
+                transform: translateY(0) scale(1);
+                opacity: 0.8;
+            }
+            to {
+                transform: translateY(-100vh) scale(1.6);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="card">
+        <h1>Chwane 🥹💖</h1>
+        <p>Will you be my Valentine?</p>
+        <button id="yesBtn">Yes 🥰</button>
+        <button id="noBtn">No 😭</button>
+    </div>
+
+    <iframe id="music" width="0" height="0" src="" frameborder="0" allow="autoplay"></iframe>
+
+    <script>
+        const noBtn = document.getElementById("noBtn");
+        const yesBtn = document.getElementById("yesBtn");
+        const card = document.getElementById("card");
+        const music = document.getElementById("music");
+
+        noBtn.addEventListener("mouseover", () => {
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            noBtn.style.left = x + "px";
+            noBtn.style.top = y + "px";
+        });
+
+        yesBtn.addEventListener("click", () => {
+            music.src = "https://www.youtube.com/embed/8ZQ6G1R2FzE?autoplay=1&loop=1&playlist=8ZQ6G1R2FzE";
+            card.innerHTML = `
+                <h1>Yayyyy 💕</h1>
+                <p>
+                    You just made my heart smile, Chwane 🥹❤️<br>
+                    From this moment on, it’s you and me.
+                </p>
+            `;
+        });
+
+        setInterval(() => {
+            const heart = document.createElement("div");
+            heart.className = "heart";
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 6000);
+        }, 400);
+    </script>
+</body>
+</html>
